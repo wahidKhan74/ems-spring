@@ -1,0 +1,14 @@
+#server config
+server:
+  port : 9000
+  
+#logs config
+logging:
+  level:
+    org:
+      springframework: INFO
+
+#profile config
+spring:
+  profiles:
+    active: dev

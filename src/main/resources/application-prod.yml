@@ -1,0 +1,17 @@
+#Spring datasource
+spring:
+  application:
+    name: This is Employee Management App
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.13.78:3306/emsdb
+    username: prodUser
+    password: prodUser121
+#Hibernate properties
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update
+  
