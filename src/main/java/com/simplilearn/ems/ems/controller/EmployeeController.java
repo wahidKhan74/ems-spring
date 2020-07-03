@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.simplilearn.ems.ems.exception.EmployeeNotFoundException;
 import com.simplilearn.ems.ems.model.Employee;
 import com.simplilearn.ems.ems.repository.EmployeeRepository;
 
@@ -59,8 +60,9 @@ public class EmployeeController {
 	@GetMapping("/employees/{id}")
 	public Employee getOneEmployee(@PathVariable(value="id") Long empId) {
 		
-		Optional<Employee> opEmployee = empRepo.findById(empId);
-		return opEmployee.get();
+		return empRepo.findById(empId)
+				.orElseThrow(()-> new EmployeeNotFoundException() );
+
 	}
 	
 	//Delete Employee 
