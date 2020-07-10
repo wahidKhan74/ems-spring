@@ -3,7 +3,8 @@ package com.simplilearn.ems.ems.controller;
 import java.util.List;
 import java.util.Optional;
 
-import org.omg.CosNaming.NamingContextPackage.NotFound;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,7 +23,9 @@ import com.simplilearn.ems.ems.repository.EmployeeRepository;
 @RestController
 @RequestMapping("/api")
 public class EmployeeController {
-
+	
+	private static final Logger LOGGER = LogManager.getLogger(EmployeeController.class);
+	
 	@Autowired
 	EmployeeRepository empRepo;
 
@@ -31,7 +34,15 @@ public class EmployeeController {
 	// Get all Employee
 	@GetMapping("/employees")
 	public List<Employee> getAllEmployee() {
-		return empRepo.findAll();
+		List<Employee> employees =null;
+		try {	
+			LOGGER.info("Get : All Employee in EMS");
+			employees= empRepo.findAll();
+			
+		} catch (Exception e) {
+			LOGGER.error("Get : ALL Employee in EMS has error"+e);			
+		}
+		return employees;
 	}
 
 	// Create a new Employee
