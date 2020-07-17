@@ -59,6 +59,12 @@ public class Department extends Auditable {
 		this.employees = employees;
 	}
 	public Department(){}
+
+	public Department(Long id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
 	
 
 	

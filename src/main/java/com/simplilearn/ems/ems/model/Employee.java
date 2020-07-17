@@ -52,6 +52,8 @@ public class Employee extends Auditable {
 		this.department = department;
 	}
 
+	
+
 	public Long getId() {
 		return id;
 	}
