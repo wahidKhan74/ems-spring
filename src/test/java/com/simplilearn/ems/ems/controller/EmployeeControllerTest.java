@@ -66,7 +66,7 @@ public class EmployeeControllerTest {
 		ResponseEntity<String> result = restTemplate.postForEntity(uri, request,String.class);
 		
 		//verify for invalid input response
-		assertEquals(400, result.getStatusCodeValue());
+		assertEquals(415, result.getStatusCodeValue());
 	}
 	
 	@Test
