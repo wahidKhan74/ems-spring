@@ -73,6 +73,7 @@ public class EmployeeControllerTest {
 	
 	@Test
 	@DisplayName("Test - GetAll Employee Success")
+	@Disabled
 	public void testGetEmployeesSuccess() throws URISyntaxException {
 		// create URI
 		final String baseUrl = "http://localhost:"+port+"/api/"+"employees/";
