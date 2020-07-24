@@ -11,7 +11,7 @@ public class EmsApplication {
 	private static final Logger LOGGER = LogManager.getLogger(EmsApplication.class);
 			
 	public static void main(String[] args) {
-		LOGGER.info("Starting Spring boot application ...");
+		LOGGER.info("Starting Spring boot application with logs...");
 		SpringApplication.run(EmsApplication.class, args);
 		
 	}
