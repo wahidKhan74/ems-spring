@@ -108,8 +108,6 @@ public class Employee extends Auditable {
 
 	public void setDepartment(Department department) {
 		this.department = department;
-	}
-	
-	
+	}	
 	
 }
