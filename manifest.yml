@@ -1,12 +1,12 @@
 applications:
-    - name: ems-spring4
+    - name: ems-spring1
       memory: 768M
       instances: 1
       path: target\ems-0.0.1-SNAPSHOT.jar
       random-route: true
       services:
         - emsdb
-    - name: ems-sprin3
+    - name: ems-sprin2
       memory: 768M
       instances: 1
       path: target\ems-0.0.1-SNAPSHOT.jar
