@@ -5,12 +5,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/")
 public class HomeController {
 
 	@GetMapping("")
 	public String greetingServer() {
-		return "Hello, World";
+		return "Hello, PCF Auto deployment with jekins";
 	}
 	
 }
