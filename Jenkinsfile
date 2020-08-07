@@ -17,9 +17,9 @@ pipeline {
                 }
             }
         }
-        stage('Deploy'){
-             echo '------ Build Stage ------'
+        stage('Deploy'){             
              steps {
+                echo '------ Build Stage ------'
                 withCredentials([[ $class: 'UsernamePasswordMultiBinding',
                 credentialsId: 'PCF_PASS',
                 usernameVariable: 'USERNAME',
