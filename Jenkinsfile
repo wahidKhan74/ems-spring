@@ -1,22 +1,32 @@
 pipeline {
     agent any
     stages {
-        stage('Build'){
+        stage('Compile'){
             steps{
-                echo '------ Build Stage ------'
+                echo '------ Compile Stage ------'
                 withMaven(maven:'Jenkins_maven3'){
                     sh 'mvn clean compile'
                 }
             }
         }
-        stage('Test'){
+        stage('Build'){
              steps {
-                echo 'Testing ...'
+                echo '------ Build Stage ------'
+                withMaven(maven:'Jenkins_maven3'){
+                    sh 'mvn clean package -DskipTests'
+                }
             }
         }
         stage('Deploy'){
+             echo '------ Build Stage ------'
              steps {
-                echo 'Deploying ...'
+                withCredentials([[ $class: 'UsernamePasswordMultiBinding',
+                credentialsId: 'PCF_PASS',
+                usernameVariable: 'USERNAME',
+                passwordVariable: 'PASSWORD' ]]){
+                    sh 'cf login -a https://api.run.pivotal.io -u $USERNAME  -p $PASSWORD'
+                    sh 'cf push'
+                }
             }
         }
     }
