@@ -2,8 +2,11 @@ pipeline {
     agent any
     stages {
         stage('Build'){
-            steps {
-                echo 'Building ...'
+            steps{
+                echo '------ Build Stage ------'
+                withMaven(maven:'Jenkins_maven3'){
+                    sh 'mvn clean compile'
+                }
             }
         }
         stage('Test'){
