@@ -6,7 +6,7 @@ applications:
       random-route: true
       services:
         - emsdb
-    - name: ems-sprin2
+    - name: ems-spring2
       memory: 768M
       instances: 1
       path: target/ems-0.0.1-SNAPSHOT.jar
