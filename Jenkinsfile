@@ -4,7 +4,7 @@ pipeline {
         stage('Compile'){
             steps{
                 echo '------ Compile Stage ------'
-                withMaven(maven:'Jenkins_maven3'){
+                withMaven(maven:'maven_3.6.3'){
                     sh 'mvn clean compile'
                 }
             }
@@ -12,7 +12,7 @@ pipeline {
         stage('Build'){
              steps {
                 echo '------ Build Stage ------'
-                withMaven(maven:'Jenkins_maven3'){
+                withMaven(maven:'maven_3.6.3'){
                     sh 'mvn clean package -DskipTests'
                 }
             }
@@ -21,11 +21,11 @@ pipeline {
              steps {
                 echo '------ Build Stage ------'
                 withCredentials([[ $class: 'UsernamePasswordMultiBinding',
-                credentialsId: 'PCF_PASS',
+                credentialsId: 'PCF_CREDS',
                 usernameVariable: 'USERNAME',
                 passwordVariable: 'PASSWORD' ]]){
                     sh 'cf login -a https://api.run.pivotal.io -u $USERNAME  -p $PASSWORD'
-                    sh 'cf target -s development'
+                    sh 'cf target -s production'
                     sh 'cf push'
                 }
             }
